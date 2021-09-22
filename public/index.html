@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!--<link href="style.css" rel="stylesheet">-->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link href="style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style type="text/css">
     #login,
     #loggedin {
@@ -27,7 +29,7 @@
   <div class="container">
     <div id="login">
       <h1>Spotify Playlist Combine</h1>
-      <button id="login-button" class="btn btn-primary">Log in with Spotify</button>
+      <button id="login-button" class="btn btn-main">Log in with Spotify</button>
     </div>
     <div id="loggedin">
       <div id="user-profile">
@@ -42,7 +44,7 @@
 
   <h1>Spotify Playlist Combine</h1>
 
-  <div class="media">
+  <div class="media"></div>
 
       <!-- Input form that takes in two playlists and sends to playlistCombine function-->
   <form action="#" onsubmit="playlistCombine();return false">
@@ -52,7 +54,7 @@
     <input type="text" id="play2" name="play2"><br><br>
     <label for="newplay">New Playlist: </label>
     <input type="text" id="newplay" name="newplay"><br><br>
-    <input type="submit" value="Generate Playlist">
+    <input class="btn" type="submit" value="Generate Playlist">
   </form>
 
   <p>New playlist will be created for user <span id="display-name">{{display_name}}</span></p>

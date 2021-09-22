@@ -1,0 +1,43 @@
+html {
+    font-family: 'Roboto';
+    font-weight:400;
+}
+
+input {
+    float: right;
+}
+
+.btn-main {
+    color: #191414;
+    background-color: #1DB954;
+}
+
+.btn-main:hover {
+    color: white;
+    background-color: #191414;
+}
+
+.btn {
+    font-weight: 600;
+    border: 1px solid transparent;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #1DB954;
+}
+
+#display-name {
+    font-weight: 600;
+}
+
+#user-profile, #login {
+    margin: auto;
+    margin-top: 120px;
+    height: 600px;
+    width: 400px;
+    padding: 20px 40px;
+}
