@@ -1,2 +1,2 @@
 # Playlist-Combine
-Application to combine Spotify playlists
+Web-App to combine Spotify playlists
