@@ -48,6 +48,7 @@ async function playlistFetch(listname) {
         }
     })
     const tracks = await response.json()
+        .catch(alert("Invalid playlist, please double check url"))
     return tracks
 }
 

@@ -1,43 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
 html {
-    font-family: 'Roboto';
+    font-family: 'Raleway';
     font-weight:400;
 }
 
-input {
-    float: right;
+body {
+    margin: 0;
 }
 
-.btn-main {
-    color: #191414;
-    background-color: #1DB954;
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -2px;
 }
 
-.btn-main:hover {
-    color: white;
-    background-color: #191414;
+p {
+    line-height: 1.5;
 }
 
-.btn {
+header {
+    margin: 0;
+    padding: 28px 0 26px 0;
+    line-height: 0;
+    border-bottom: 1px solid #d9dadc;
+    text-align: center;
+}
+
+li {
+    margin-top: 6px;
+}
+
+li::marker {
     font-weight: 600;
-    border: 1px solid transparent;
-    padding: 12px 24px;
+}
+
+ol {
+    margin-bottom: 30px;
+}
+
+label {
+    margin-top: 6px;
     font-size: 14px;
+    font-weight: 700;
+}
+
+input {
+    border: 1px solid lightgrey;
+}
+
+input:focus {
+    outline: none;
+    transition : border 150ms ease-in;
+    border: 1px solid grey;
+}
+
+#play1, #play2, #newplay {
+    margin-top: 6px;
+    margin-bottom: 0;
+    width: 100%;
+    height: 36px;
+}
+
+button, .btn {
+    margin-top: 18px;
+    margin-bottom: 36px;
+    color: white;
+    background-color: #15883e;
+    width: 100%;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 16px 24px;
+    font-size: 13px;
     border-radius: 50px;
     text-transform: uppercase;
 }
 
-.btn:hover {
+button:hover, .btn:hover {
+    color: white;
     background-color: #1DB954;
+    transition: background-color 0.3s ease;
 }
 
+
 #display-name {
-    font-weight: 600;
+    display: none;
 }
 
 #user-profile, #login {
     margin: auto;
-    margin-top: 120px;
+    margin-top: 36px;
     height: 600px;
-    width: 400px;
-    padding: 20px 40px;
+    max-width: 400px;
+
+}
+
+details {
+    margin-bottom: 30px;
+}
+
+details summary > * {
+    display: inline;
+  }
+
+@media only screen and (max-width: 760px) {
+
+    h1 {
+     font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+    header {    
+        padding: 15px 0 14px 0;
+    }
+
+    .mobile {
+        padding: 10px;
+    }
 }

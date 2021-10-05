@@ -7,12 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="style.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style type="text/css">
     #login,
-    #loggedin {
+    #loggedin,
+    header {
       display: none;
     }
 
@@ -25,40 +23,59 @@
   </style>
 </head>
 
+<header>
+  <h1>Playlist Combine</h1>
+</header>
+
 <body>
-  <div class="container">
-    <div id="login">
-      <h1>Spotify Playlist Combine</h1>
-      <button id="login-button" class="btn btn-main">Log in with Spotify</button>
+  <div id="login">
+  </div>
+  <div id="loggedin">
+    <div id="user-profile">
     </div>
-    <div id="loggedin">
-      <div id="user-profile">
-      </div>
-      <div id="oauth">
-      </div>
+    <div id="oauth">
     </div>
   </div>
+
 
 
   <script id="user-profile-template" type="text/x-handlebars-template">
 
-  <h1>Spotify Playlist Combine</h1>
+<div class="mobile">
 
-  <div class="media"></div>
+  <h2>Features</h2>
+
+<p>Combine Spotify playlists into a new playlist with an equal number of songs from the original playlists</p>
+<details>
+  <summary><h2>Instructions</h2></summary>
+    <ol>
+      <li>Open and login to Spotify </li>
+      <li>Select the first playlist</li>
+      <li>3 dots > "Add to Profile" (if needed)</li>
+      <li>3 dots > Share > Copy</li>
+      <li>Paste the link below</li>
+      <li>Repeat for second playlist</li>
+      <li>Enter new playlist name</li>
+      <li>Select "Generate Playlist"</li>
+    </ol>
+
+  </details>
 
       <!-- Input form that takes in two playlists and sends to playlistCombine function-->
   <form action="#" onsubmit="playlistCombine();return false">
-    <label for="play1">First Playlist: </label>
+    <label for="play1">First playlist: </label>
     <input type="text" id="play1" name="play1"><br><br>
-    <label for="play2">Second Playlist: </label>
+    <label for="play2">Second playlist: </label>
     <input type="text" id="play2" name="play2"><br><br>
-    <label for="newplay">New Playlist: </label>
+    <label for="newplay">New playlist name: </label>
     <input type="text" id="newplay" name="newplay"><br><br>
     <input class="btn" type="submit" value="Generate Playlist">
   </form>
 
-  <p>New playlist will be created for user <span id="display-name">{{display_name}}</span></p>
+  <span id="display-name">{{display_name}}</span>
   </div>
+
+</div>
 
   </script>
 
@@ -120,7 +137,7 @@
         storedState = localStorage.getItem(stateKey);
 
       if (access_token && (state == null || state !== storedState)) {
-        alert('There was an error during the authentication');
+        alert('Authentication error, please retry');
       } else {
         localStorage.removeItem(stateKey);
         if (access_token) {
@@ -134,32 +151,37 @@
 
               $('#login').hide();
               $('#loggedin').show();
+              $('header').show();
             }
           });
         } else {
           $('#login').show();
           $('#loggedin').hide();
+          $('header').hide();
         }
 
-        document.getElementById('login-button').addEventListener('click', function () {
+        if (document.querySelector("#login").style.display == "block") {
 
-          var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
-          var redirect_uri = 'http://localhost:8888'; // Your redirect uri
+          window.addEventListener('load', function () {
 
-          var state = generateRandomString(16);
+            var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
+            var redirect_uri = 'http://localhost:8888'; // Your redirect uri
 
-          localStorage.setItem(stateKey, state);
-          var scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
+            var state = generateRandomString(16);
 
-          var url = 'https://accounts.spotify.com/authorize';
-          url += '?response_type=token';
-          url += '&client_id=' + encodeURIComponent(client_id);
-          url += '&scope=' + encodeURIComponent(scope);
-          url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
-          url += '&state=' + encodeURIComponent(state);
+            localStorage.setItem(stateKey, state);
+            var scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
 
-          window.location = url;
-        }, false);
+            var url = 'https://accounts.spotify.com/authorize';
+            url += '?response_type=token';
+            url += '&client_id=' + encodeURIComponent(client_id);
+            url += '&scope=' + encodeURIComponent(scope);
+            url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+            url += '&state=' + encodeURIComponent(state);
+
+            window.location = url;
+          }, false);
+        }
       }
     })();
   </script>
