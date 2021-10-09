@@ -27,6 +27,15 @@ header {
     text-align: center;
 }
 
+#selected-heading {
+    display: none;
+}
+
+#playlists, #selected-playlists {
+    max-height: 8em;
+    overflow-y: scroll;
+}
+
 li {
     margin-top: 6px;
 }
@@ -39,23 +48,24 @@ ol {
     margin-bottom: 30px;
 }
 
+a {
+    cursor: pointer;
+}
+
 label {
     margin-top: 6px;
     font-size: 14px;
     font-weight: 700;
 }
 
-input {
-    border: 1px solid lightgrey;
-}
-
-input:focus {
+#user:focus {
     outline: none;
     transition : border 150ms ease-in;
     border: 1px solid grey;
 }
 
-#play1, #play2, #newplay {
+#user {
+    border: 1px solid lightgrey;
     margin-top: 6px;
     margin-bottom: 0;
     width: 100%;
@@ -82,12 +92,7 @@ button:hover, .btn:hover {
     transition: background-color 0.3s ease;
 }
 
-
-#display-name {
-    display: none;
-}
-
-#user-profile, #login {
+#user-profile, #login, .main {
     margin: auto;
     margin-top: 36px;
     height: 600px;
@@ -95,13 +100,9 @@ button:hover, .btn:hover {
 
 }
 
-details {
-    margin-bottom: 30px;
+.cancel {
+    margin-left: 1em;
 }
-
-details summary > * {
-    display: inline;
-  }
 
 @media only screen and (max-width: 760px) {
 
