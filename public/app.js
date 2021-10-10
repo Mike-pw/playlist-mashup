@@ -104,21 +104,28 @@ async function combinePlaylist() {
     //Find the length of the shortest playlist and assign to variable
     const lengths = []
     let minLength
-
-
     // NEED TO COMPLETE MINIMUM LENGTH AND MAKE SHUFFLING RANDOM (DEAL ONE SONG FROM EACH PLAYLIST RANDOMLY)
     for (x in combinedPlaylists) {
         lengths.push(combinedPlaylists[x].length)
         minLength = Math.min(...lengths)
     }
 
-    //empty array for final tracklist
+    //combine the playlists randomly, removing from combinedPlaylists so no doubles
     let trackList = []
-    for (x in combinedPlaylists) {
-        for (y in combinedPlaylists[x]) {
-            trackList.push(combinedPlaylists[x][y])
+    let i = 0
+    while (i < minLength) {
+        for (x in combinedPlaylists) {
+            const index = Math.floor(Math.random() * combinedPlaylists[x].length)
+            trackList.push(combinedPlaylists[x][index])
+            combinedPlaylists[x].splice(index, 1)
         }
+        i++
     }
+
+
+
+
+
     //create a new playlist, and add new songs to playlist
     createPlaylist(user1, trackList)
 }
