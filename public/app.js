@@ -16,6 +16,8 @@ async function getPlaylists(user) {
 
 //function to display users playlists
 async function displayPlaylists() {
+    //display playlists
+    document.querySelector("#playlists").style.display = 'block'
     const user = document.querySelector("#user").value;
     const lists = await getPlaylists(user)
     const ol = document.querySelector("#playlists")
@@ -32,8 +34,14 @@ async function displayPlaylists() {
         a.innerHTML = listName
         //add event listener to handle selected playlists
         a.addEventListener("click", function selectPlaylist() {
-            //display heading 
-            document.querySelector("#selected-heading").style.display = 'block'
+            //display heading when first playlist added
+            if (selectedPlaylists.length == 0) {
+                document.querySelector("#selected").style.display = 'block'
+            }
+            //display form inputs and submit button when second playlist added
+            if (selectedPlaylists.length == 1) {
+                document.querySelector("#generate").style.display = 'block'
+            }
             //send playlist name and ID to selectedPlaylists array
             const newPlaylistObject = { name: listName, id: listID }
             selectedPlaylists.push(newPlaylistObject);
@@ -47,12 +55,15 @@ async function displayPlaylists() {
             cancel.addEventListener('click', function cancelPlaylist() {
                 this.parentNode.remove()
                 selectedPlaylists.splice(selectedPlaylists.indexOf(newPlaylistObject), 1)
+                //hide generate form if no playlists are selected
                 if (selectedPlaylists.length == 0) {
-                    document.querySelector("#selected-heading").style.display = 'none'
+                    document.querySelector("#generate").style.display = 'none'
+                }
+                //hide heading if no playlists are selected
+                if (selectedPlaylists.length == 0) {
+                    document.querySelector("#selected").style.display = 'none'
                 }
             })
-
-
             li.innerHTML = listName
             li.appendChild(cancel)
             ol.appendChild(li)
@@ -62,65 +73,52 @@ async function displayPlaylists() {
     }
 }
 
-function newUser() {
-
-
-    //Select form area on page
-    const form = document.getElementById("form")
-    const position = form.childElementCount;
-
-    //counter variable
-    const count = (form.childElementCount - 1) / 2
-
-    if (count <= 5) {
-
-        //create new input field
-        const new_user = document.createElement("input")
-        new_user.setAttribute("type", "text")
-        new_user.setAttribute("name", `input_${count}`)
-        new_user.setAttribute("id", `input_${count}`)
-        //create new input label
-        const new_label = document.createElement("label")
-        new_label.textContent = `User #${count}`
-        new_label.setAttribute("for", `input_${count}`)
-        //insert mew field and label
-
-        form.insertBefore(new_user, form.childNodes[position]);
-        form.insertBefore(new_label, form.childNodes[position]);
-    }
+//function to get playlist from spotify API
+async function playlistFetch(listname) {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${listname}/tracks`, {
+        method: 'GET',
+        headers: {
+            "Authorization": "Bearer " + access_token
+        }
+    })
+    const tracks = await response.json()
+    return tracks
 }
 
-//   <label for="newplay">New playlist name: </label>
-
-//function that takes the input from form on submit, slices the unneeded parts and assigns to variable
+//function to combine all playlists
 async function combinePlaylist() {
-    const play1 = document.querySelector("#play1").value.slice(34, 56)
-    const play2 = document.querySelector("#play2").value.slice(34, 56)
 
     //call the playlist fetch function for each input playlist
-    const playlist1 = await playlistFetch(play1)
-    const playlist2 = await playlistFetch(play2)
+
+    //make nested array of tracklists for all playlists
+    const combinedPlaylists = []
+    for (x in selectedPlaylists) {
+        const results = await playlistFetch(selectedPlaylists[x].id)
+        const tracks = []
+        combinedPlaylists.push(tracks)
+        for (y in results.items) {
+            tracks.push(results.items[y].track.uri)
+        }
+    }
+
+    //Find the length of the shortest playlist and assign to variable
+    const lengths = []
+    let minLength
+
+
+    // NEED TO COMPLETE MINIMUM LENGTH AND MAKE SHUFFLING RANDOM (DEAL ONE SONG FROM EACH PLAYLIST RANDOMLY)
+    for (x in combinedPlaylists) {
+        lengths.push(combinedPlaylists[x].length)
+        minLength = Math.min(...lengths)
+    }
 
     //empty array for final tracklist
     let trackList = []
-
-    //check if playlist2 is shortest (or lengths equal)
-    if (playlist1.items.length >= playlist2.items.length) {
-        //use playlist2's length as the counter for loop
-        for (x in playlist2.items) {
-            //combine track lists one at a time
-            trackList.push('spotify:track:' + playlist1.items[x].track.id)
-            trackList.push('spotify:track:' + playlist2.items[x].track.id)
-        }
-    } else {
-        //use playlist1's length as the counter for loop
-        for (x in playlist1.items) {
-            //combine track lists one at a time
-            trackList.push('spotify:track:' + playlist1.items[x].track.id)
-            trackList.push('spotify:track:' + playlist2.items[x].track.id)
+    for (x in combinedPlaylists) {
+        for (y in combinedPlaylists[x]) {
+            trackList.push(combinedPlaylists[x][y])
         }
     }
-
     //create a new playlist, and add new songs to playlist
     createPlaylist(user1, trackList)
 }
@@ -135,13 +133,21 @@ async function createPlaylist(user, tracks) {
         },
         body: JSON.stringify({
             "name": newplay,
-            "description": "New playlist description",
+            "description": "Created by Playlist Combine",
             "public": true
         })
     })
     const data = await response.json()
+    playlistURL = data.external_urls.spotify
+    userName = data.owner.display_name
     playlistID = data.id
-    alert('New playlist named "' + newplay + '" created for user: ' + userID)
+
+    playlistURL = data.external_urls.spotify
+    const urlLink = document.querySelector("#playlist-url")
+    urlLink.textContent = "Link to New Playlist"
+    urlLink.href = playlistURL
+
+    alert('New playlist named "' + newplay + '" created for user: ' + userName)
     addToPlaylist(playlistID, tracks)
 }
 

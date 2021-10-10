@@ -39,17 +39,29 @@
     <form id="form" action="#" onsubmit="displayPlaylists();return false">
       <label for="user">User: </label>
       <input type="text" id="user" name="user"><br><br>
-      <input class="btn" type="submit" value="View Playlists">
+      <input class="btn" type="submit" value="View User's Playlists">
     </form>
 
 
     <ol id="playlists">
     </ol>
+    <div id="selected">
+      <h2 id="selected-heading">Selected Playlists</h2>
 
-    <h2 id="selected-heading">Selected Playlists</h2>
+      <ol id="selected-playlists">
+      </ol>
 
-    <ol id="selected-playlists">
-    </ol>
+    </div>
+
+    <form id="generate" action="#" onsubmit="combinePlaylist();return false">
+      <label for="newplay">New playlist name: </label>
+      <input type="text" id="newplay" name="newplay"><br><br>
+      <input class="btn" type="submit" value="Generate Playlist">
+    </form>
+
+    <a id="playlist-url"></a>
+
+
 
   </div>
   <div id="login">
@@ -75,12 +87,8 @@
 
 
 
-<!--
-  <form id="form"action="#" onsubmit="combinePlaylist();return false">
-    <label for="newplay">New playlist name: </label>
-    <input type="text" id="newplay" name="newplay"><br><br>
-    <input class="btn" type="submit" value="Generate Playlist">
-  </form>-->
+
+
 
   </div>
 

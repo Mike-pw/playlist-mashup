@@ -27,12 +27,12 @@ header {
     text-align: center;
 }
 
-#selected-heading {
+#generate, #selected, #playlists {
     display: none;
 }
 
 #playlists, #selected-playlists {
-    max-height: 8em;
+    height: 8em;
     overflow-y: scroll;
 }
 
@@ -58,13 +58,13 @@ label {
     font-weight: 700;
 }
 
-#user:focus {
+#user:focus, #newplay:focus {
     outline: none;
     transition : border 150ms ease-in;
     border: 1px solid grey;
 }
 
-#user {
+#user, #newplay {
     border: 1px solid lightgrey;
     margin-top: 6px;
     margin-bottom: 0;
