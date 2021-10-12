@@ -56,10 +56,10 @@ async function displayPlaylists() {
                 this.parentNode.remove()
                 selectedPlaylists.splice(selectedPlaylists.indexOf(newPlaylistObject), 1)
                 //hide generate form if no playlists are selected
-                if (selectedPlaylists.length == 0) {
+                if (selectedPlaylists.length == 1) {
                     document.querySelector("#generate").style.display = 'none'
                 }
-                //hide heading if no playlists are selected
+                //hide heading if only 1 playlist is selected
                 if (selectedPlaylists.length == 0) {
                     document.querySelector("#selected").style.display = 'none'
                 }
@@ -121,13 +121,8 @@ async function combinePlaylist() {
         }
         i++
     }
-
-
-
-
-
     //create a new playlist, and add new songs to playlist
-    createPlaylist(user1, trackList)
+    createPlaylist(user, trackList)
 }
 
 //function to create a new playlist with spotify API

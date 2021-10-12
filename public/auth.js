@@ -1,4 +1,4 @@
-let user1
+let user
 let access_token
 
 (function () {
@@ -60,8 +60,8 @@ let access_token
                 },
                 success: function (response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-                    user1 = response.display_name
-                    document.getElementById("user").value = user1;
+                    user = response.display_name
+                    document.getElementById("user").value = user;
                     $('#login').hide();
                     $('#loggedin').show();
                     $('header').show();
