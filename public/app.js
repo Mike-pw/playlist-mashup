@@ -74,6 +74,8 @@ async function displayPlaylists() {
     }
 }
 
+document.querySelector("form").addEventListener("click", displayPlaylists())
+
 //function to get playlist from spotify API
 async function playlistFetch(listname, offset) {
     const response = await fetch(`https://api.spotify.com/v1/playlists/${listname}/tracks?offset=${offset}`, {
