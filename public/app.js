@@ -43,6 +43,7 @@ async function displayPlaylists() {
 
         //add event listener to handle selected playlists
         a.addEventListener("click", function selectPlaylist() {
+            document.querySelector("#display").style.display = 'flex'
             //display form inputs and submit button when second playlist added
             if (selectedPlaylists.length == 1) {
                 document.querySelector("#generate").style.display = 'block'
