@@ -33,8 +33,8 @@ async function displayPlaylists() {
 
         //truncate long playlist names
         function truncatePlaylist(playlist) {
-            if (playlist.length > 12) {
-                return playlist.slice(0, 12) + "..."
+            if (playlist.length > 10) {
+                return playlist.slice(0, 10) + "..."
             } else {
                 return playlist
             }
