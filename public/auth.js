@@ -34,14 +34,6 @@ let access_token
         return text;
     };
 
-    //var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-    //    userProfileTemplate = Handlebars.compile(userProfileSource),
-    //    userProfilePlaceholder = document.getElementById('user-profile');
-
-    //oauthSource = document.getElementById('oauth-template').innerHTML,
-    //    oauthTemplate = Handlebars.compile(oauthSource),
-    //    oauthPlaceholder = document.getElementById('oauth');
-
     var params = getHashParams();
 
     access_token = params.access_token,
@@ -59,7 +51,6 @@ let access_token
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function (response) {
-                    //                 userProfilePlaceholder.innerHTML = userProfileTemplate(response);
                     user = response.display_name
                     document.getElementById("user").value = user;
                     $('#login').hide();
@@ -76,7 +67,7 @@ let access_token
         document.querySelector("#login-button").addEventListener('click', function () {
 
             var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
-            var redirect_uri = 'http://localhost:8888'; // Your redirect uri
+            var redirect_uri = 'https://festive-mahavira-6bd1ac.netlify.app/'; // Your redirect uri
 
             var state = generateRandomString(16);
 
