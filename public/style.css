@@ -40,7 +40,7 @@ header {
 }
 
 #display {
-    display: none;
+    display: flex;
 }
 #playlists, #selected-playlists {
     height: 130px;
