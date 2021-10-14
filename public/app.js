@@ -175,7 +175,7 @@ async function createPlaylist(user, tracks) {
         addToPlaylist(playlistID, tracks.slice(i * 100, (i + 1) * 100))
         i++
     }
-    addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length - 1))
+    addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length))
 }
 
 //function to add new songs to the new playlist with spotify API
