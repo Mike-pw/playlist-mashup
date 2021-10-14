@@ -30,6 +30,7 @@ async function displayPlaylists() {
 
         const listName = lists[x].name
         const listID = lists[x].id
+        const trackCount = lists[x].tracks.total
 
         a.innerHTML = listName
         //add event listener to handle selected playlists
@@ -43,7 +44,7 @@ async function displayPlaylists() {
                 document.querySelector("#generate").style.display = 'block'
             }
             //send playlist name and ID to selectedPlaylists array
-            const newPlaylistObject = { name: listName, id: listID }
+            const newPlaylistObject = { name: listName, id: listID, count: trackCount }
             selectedPlaylists.push(newPlaylistObject);
 
             const ol = document.querySelector("#selected-playlists")
@@ -74,8 +75,8 @@ async function displayPlaylists() {
 }
 
 //function to get playlist from spotify API
-async function playlistFetch(listname) {
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${listname}/tracks`, {
+async function playlistFetch(listname, offset) {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${listname}/tracks?offset=${offset}`, {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + access_token
@@ -93,13 +94,21 @@ async function combinePlaylist() {
     //make nested array of tracklists for all playlists
     const combinedPlaylists = []
     for (x in selectedPlaylists) {
-        const results = await playlistFetch(selectedPlaylists[x].id)
+        const listID = selectedPlaylists[x].id
+        const maxCount = Math.ceil(selectedPlaylists[x].count / 100)
+        let count = 0
         const tracks = []
-        combinedPlaylists.push(tracks)
-        for (y in results.items) {
-            tracks.push(results.items[y].track.uri)
+        while (count < maxCount) {
+            let data = await playlistFetch(listID, count * 100)
+            for (y in data.items) {
+                tracks.push(data.items[y].track.uri)
+
+            }
+            count++
         }
+        combinedPlaylists.push(tracks)
     }
+
 
     //Find the length of the shortest playlist and assign to variable
     const lengths = []
@@ -110,8 +119,11 @@ async function combinePlaylist() {
         minLength = Math.min(...lengths)
     }
 
+    //if a song appears more than once in any two playlists, automatically add it
+    let trackList = combinedPlaylists.reduce((a, b) => a.filter(c => b.includes(c)))
+
+
     //combine the playlists randomly, removing from combinedPlaylists so no doubles
-    let trackList = []
     let i = 0
     while (i < minLength) {
         for (x in combinedPlaylists) {
@@ -121,8 +133,11 @@ async function combinePlaylist() {
         }
         i++
     }
+    //remove any duplicates
+    const uniqueTrackList = [...new Set(trackList)]
+
     //create a new playlist, and add new songs to playlist
-    createPlaylist(user, trackList)
+    createPlaylist(user, uniqueTrackList)
 }
 
 //function to create a new playlist with spotify API
@@ -150,7 +165,17 @@ async function createPlaylist(user, tracks) {
     urlLink.href = playlistURL
 
     alert('New playlist named "' + newplay + '" created for user: ' + userName)
-    addToPlaylist(playlistID, tracks)
+
+    //make multiple requests if more than 100 songs to be added
+    //addToPlaylist(playlistID, tracks.slice(0, 100))
+
+    const repeat = Math.ceil(tracks.length / 100)
+    let i = 0
+    while (i < (repeat - 1)) {
+        addToPlaylist(playlistID, tracks.slice(i * 100, (i + 1) * 100))
+        i++
+    }
+    addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length - 1))
 }
 
 //function to add new songs to the new playlist with spotify API
