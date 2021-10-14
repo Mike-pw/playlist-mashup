@@ -65,7 +65,7 @@ let access_token
         document.querySelector("#login-button").addEventListener('click', function () {
 
             var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
-            var redirect_uri = 'https://www.playlistmashup.com'; // Your redirect uri
+            var redirect_uri = 'https://playlistmashup.com/'; //redirect uri
 
             var state = generateRandomString(16);
 
