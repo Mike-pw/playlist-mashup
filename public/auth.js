@@ -66,7 +66,7 @@ let access_token
 
             var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
             // var redirect_uri = 'http://localhost:8888'; // DEVELOPMENT
-            var redirect_uri = 'https://www.playlistmashup.com/'; // PRODUCTION
+            var redirect_uri = 'https://www.playlistmashup.com'; // PRODUCTION
 
             var state = generateRandomString(16);
 
