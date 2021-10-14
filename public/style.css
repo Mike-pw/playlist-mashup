@@ -20,6 +20,7 @@ p {
 }
 
 header {
+    display: block;
     margin: 0;
     padding: 28px 0 26px 0;
     line-height: 0;
@@ -114,9 +115,5 @@ button:hover, .btn:hover {
 
     header {    
         padding: 15px 0 14px 0;
-    }
-
-    .mobile {
-        padding: 10px;
     }
 }
