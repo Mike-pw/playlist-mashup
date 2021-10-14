@@ -150,7 +150,7 @@ async function createPlaylist(user, tracks) {
         },
         body: JSON.stringify({
             "name": newplay,
-            "description": "Created by Playlist Combine",
+            "description": "Created by Playlist Mashup",
             "public": true
         })
     })
@@ -172,15 +172,15 @@ async function createPlaylist(user, tracks) {
     const repeat = Math.ceil(tracks.length / 100)
     let i = 0
     while (i < (repeat - 1)) {
-        addToPlaylist(playlistID, tracks.slice(i * 100, (i + 1) * 100))
+        await addToPlaylist(playlistID, tracks.slice(i * 100, (i + 1) * 100))
         i++
     }
-    addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length))
+    await addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length))
 }
 
 //function to add new songs to the new playlist with spotify API
-function addToPlaylist(playlistID, tracks) {
-    fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
+async function addToPlaylist(playlistID, tracks) {
+    await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
         method: 'POST',
         headers: {
             "Authorization": "Bearer " + access_token
