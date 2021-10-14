@@ -10,50 +10,53 @@
 
 </head>
 
-<header>
-  <h1>Playlist Mashup</h1>
-</header>
-
 <body>
-  <div class="main">
 
-    <h2>Features</h2>
+  <header>
+    <h1>Playlist Mashup</h1>
+  </header>
 
-    <p>Mashup Spotify playlists into a new playlist with an equal number of songs from the originals</p>
+  <main>
+    <div id="login">
 
-    <button id="login-button">Login with Spotify</button>
-
-    <form id="form" action="#" onsubmit="displayPlaylists();return false">
-      <label for="user">User: </label>
-      <input type="text" id="user" name="user"><br><br>
-      <input class="btn" type="submit" value="View User's Playlists">
-    </form>
+      <p>Combine any public Spotify playlists,
+        creating a new playlist with equal parts from the originals.
+        Common songs are automatically added</p>
 
 
-    <ol id="playlists">
-    </ol>
-    <div id="selected">
-      <h2 id="selected-heading">Selected Playlists</h2>
-
-      <ol id="selected-playlists">
-      </ol>
-
+      <button id="login-button">Login with Spotify</button>
     </div>
 
-    <form id="generate" action="#" onsubmit="combinePlaylist();return false">
-      <label for="newplay">New playlist name: </label>
-      <input type="text" id="newplay" name="newplay"><br><br>
-      <input class="btn" type="submit" value="Generate Playlist">
-    </form>
+    <div id="loggedin">
+      <form id="form" action="#" onsubmit="displayPlaylists();return false">
+        <label for="user">User: </label>
+        <input type="text" id="user" name="user"><br><br>
+        <input id="get-playlists" class="btn" type="submit" value="Get Playlists">
+      </form>
+      <div id="display">
+        <ol id="playlists">
+        </ol>
 
-    <a id="playlist-url"></a>
+        <ol id="selected-playlists">
+        </ol>
 
-  </div>
+      </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="auth.js"></script>
-  <script src="app.js"></script>
+      <form id="generate" action="#" onsubmit="combinePlaylist();return false">
+        <label for="newplay">New playlist name: </label>
+        <input type="text" id="newplay" name="newplay"><br><br>
+        <input class="btn" type="submit" value="Generate Playlist">
+      </form>
+
+      <a id="playlist-url"></a>
+    </div>
+  </main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
 
 
 

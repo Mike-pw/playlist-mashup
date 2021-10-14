@@ -17,7 +17,6 @@ async function getPlaylists(user) {
 //function to display users playlists
 async function displayPlaylists() {
     //display playlists
-    document.querySelector("#playlists").style.display = 'block'
     const user = document.querySelector("#user").value;
     const lists = await getPlaylists(user)
     const ol = document.querySelector("#playlists")
@@ -32,13 +31,18 @@ async function displayPlaylists() {
         const listID = lists[x].id
         const trackCount = lists[x].tracks.total
 
-        a.innerHTML = listName
+        //truncate long playlist names
+        function truncatePlaylist(playlist) {
+            if (playlist.length > 15) {
+                return playlist.slice(0, 15) + "..."
+            } else {
+                return playlist
+            }
+        }
+        a.innerHTML = truncatePlaylist(listName)
+
         //add event listener to handle selected playlists
         a.addEventListener("click", function selectPlaylist() {
-            //display heading when first playlist added
-            if (selectedPlaylists.length == 0) {
-                document.querySelector("#selected").style.display = 'block'
-            }
             //display form inputs and submit button when second playlist added
             if (selectedPlaylists.length == 1) {
                 document.querySelector("#generate").style.display = 'block'
@@ -60,12 +64,8 @@ async function displayPlaylists() {
                 if (selectedPlaylists.length == 1) {
                     document.querySelector("#generate").style.display = 'none'
                 }
-                //hide heading if only 1 playlist is selected
-                if (selectedPlaylists.length == 0) {
-                    document.querySelector("#selected").style.display = 'none'
-                }
             })
-            li.innerHTML = listName
+            li.innerHTML = truncatePlaylist(listName)
             li.appendChild(cancel)
             ol.appendChild(li)
         })

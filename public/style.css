@@ -9,6 +9,13 @@ body {
     margin: 0;
 }
 
+main {
+    margin: auto;
+    margin-top: 36px;
+    min-height: 600px;
+    max-width: 360px;
+}
+
 h1 {
     font-size: 40px;
     font-weight: 700;
@@ -28,13 +35,21 @@ header {
     text-align: center;
 }
 
-#generate, #selected, #playlists {
+#generate {
     display: none;
 }
 
+#display {
+    display: flex;
+}
 #playlists, #selected-playlists {
-    height: 8em;
+    height: 130px;
     overflow-y: scroll;
+    width: 180px;
+}
+
+#get-playlists{
+    margin-top: 22px;
 }
 
 li {
@@ -47,6 +62,7 @@ li::marker {
 
 ol {
     margin-bottom: 30px;
+    padding-left: 24px;
 }
 
 a {
@@ -91,14 +107,6 @@ button:hover, .btn:hover {
     color: white;
     background-color: #1DB954;
     transition: background-color 0.3s ease;
-}
-
-#user-profile, #login, .main {
-    margin: auto;
-    margin-top: 36px;
-    height: 600px;
-    max-width: 400px;
-
 }
 
 .cancel {

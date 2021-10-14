@@ -53,21 +53,20 @@ let access_token
                 success: function (response) {
                     user = response.display_name
                     document.getElementById("user").value = user;
-                    $('#login').hide();
-                    $('#loggedin').show();
                     $('header').show();
+                    $('#login').hide();
                 }
             });
         } else {
             $('#login').show();
             $('#loggedin').hide();
-            $('header').hide();
         }
 
         document.querySelector("#login-button").addEventListener('click', function () {
 
             var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
-            var redirect_uri = 'https://festive-mahavira-6bd1ac.netlify.app/'; // Your redirect uri
+            // var redirect_uri = 'http://localhost:8888'; // DEVELOPMENT
+            var redirect_uri = 'https://www.playlistmashup.com/'; // PRODUCTION
 
             var state = generateRandomString(16);
 
