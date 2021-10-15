@@ -11,9 +11,9 @@ body {
 
 main {
     margin: auto;
-    margin-top: 36px;
     min-height: 600px;
     max-width: 360px;
+    padding-top: 12px;
 }
 
 h1 {
@@ -23,6 +23,8 @@ h1 {
 }
 
 p {
+    margin-top: 6px;
+    margin-bottom: 18px;
     line-height: 1.5;
 }
 
@@ -35,21 +37,13 @@ header {
     text-align: center;
 }
 
-#generate {
+#generate, #loggedin {
     display: none;
 }
 
-#display {
-    display: flex;
-}
 #playlists, #selected-playlists {
     height: 130px;
-    overflow-y: scroll;
-    width: 180px;
-}
-
-#get-playlists{
-    margin-top: 22px;
+    overflow-y: overlay;
 }
 
 li {
@@ -61,8 +55,8 @@ li::marker {
 }
 
 ol {
-    margin-bottom: 30px;
-    padding-left: 24px;
+    margin-bottom: 6px;
+    padding-left: 26px;
 }
 
 a {
@@ -90,8 +84,6 @@ label {
 }
 
 button, .btn {
-    margin-top: 18px;
-    margin-bottom: 36px;
     color: white;
     background-color: #15883e;
     width: 100%;
