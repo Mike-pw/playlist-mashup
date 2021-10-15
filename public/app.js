@@ -43,6 +43,8 @@ async function displayPlaylists() {
 
         //add event listener to handle selected playlists
         a.addEventListener("click", function selectPlaylist() {
+            //add heading when playlist is selected
+            document.querySelector("#selected-heading").style.display = 'block'
             //display form inputs and submit button when second playlist added
             if (selectedPlaylists.length == 1) {
                 document.querySelector("#generate").style.display = 'block'
@@ -63,6 +65,10 @@ async function displayPlaylists() {
                 //hide generate form if no playlists are selected
                 if (selectedPlaylists.length == 1) {
                     document.querySelector("#generate").style.display = 'none'
+                }
+                //hide generate form if no playlists are selected
+                if (selectedPlaylists.length == 0) {
+                    document.querySelector("#selected-heading").style.display = 'none'
                 }
             })
             li.innerHTML = truncatePlaylist(listName)

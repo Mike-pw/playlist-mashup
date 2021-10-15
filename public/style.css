@@ -41,7 +41,7 @@ header {
     text-align: center;
 }
 
-#generate, #loggedin {
+#generate, #loggedin, #selected-heading {
     display: none;
 }
 
