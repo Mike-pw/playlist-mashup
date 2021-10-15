@@ -5,10 +5,6 @@ html {
     font-weight:400;
 }
 
-h2 {
-    font-size: 18px;
-}
-
 body {
     margin: 0;
 }
@@ -24,6 +20,12 @@ h1 {
     font-size: 40px;
     font-weight: 700;
     letter-spacing: -2px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 p {
@@ -88,7 +90,7 @@ label {
 }
 
 button, .btn {
-    margin-top: 12px;
+    margin-top: 24px;
     color: white;
     background-color: #15883e;
     width: 100%;
