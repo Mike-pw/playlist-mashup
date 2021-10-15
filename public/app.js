@@ -162,13 +162,9 @@ async function createPlaylist(user, tracks) {
     })
     const data = await response.json()
     playlistURL = data.external_urls.spotify
-    userName = data.owner.display_name
     playlistID = data.id
-
     playlistURL = data.external_urls.spotify
     window.location = playlistURL
-
-    alert('New playlist named "' + newplay + '" created for user: ' + userName)
 
     //make multiple requests if more than 100 songs to be added
     //addToPlaylist(playlistID, tracks.slice(0, 100))
