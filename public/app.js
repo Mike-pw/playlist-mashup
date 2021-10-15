@@ -148,6 +148,7 @@ async function combinePlaylist() {
 
 //function to create a new playlist with spotify API
 async function createPlaylist(user, tracks) {
+    alert("Generating playlist, please wait")
     const newplay = document.querySelector("#newplay").value
     const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
         method: 'POST',
