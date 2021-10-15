@@ -88,6 +88,7 @@ label {
 }
 
 button, .btn {
+    margin-top: 12px;
     color: white;
     background-color: #15883e;
     width: 100%;

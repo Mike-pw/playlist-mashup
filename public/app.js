@@ -166,9 +166,7 @@ async function createPlaylist(user, tracks) {
     playlistID = data.id
 
     playlistURL = data.external_urls.spotify
-    const urlLink = document.querySelector("#playlist-url")
-    urlLink.textContent = "Link to New Playlist"
-    urlLink.href = playlistURL
+    window.location = playlistURL
 
     alert('New playlist named "' + newplay + '" created for user: ' + userName)
 
