@@ -13,7 +13,6 @@ main {
     margin: auto;
     min-height: 600px;
     max-width: 360px;
-    padding-top: 12px;
 }
 
 h1 {
@@ -23,15 +22,15 @@ h1 {
 }
 
 h2 {
-    font-size: 18px;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 p {
-    margin-top: 6px;
-    margin-bottom: 18px;
     line-height: 1.5;
+    margin-top: 26px;
+    margin-bottom: 26px;
 }
 
 header {
@@ -50,6 +49,8 @@ header {
 #playlists, #selected-playlists {
     height: 130px;
     overflow-y: overlay;
+    margin-top: 6px;
+    margin-bottom: 26px;
 }
 
 li {
@@ -61,7 +62,6 @@ li::marker {
 }
 
 ol {
-    margin-bottom: 6px;
     padding-left: 26px;
 }
 
@@ -69,10 +69,20 @@ a {
     cursor: pointer;
 }
 
+#form {
+    margin-top: 26px;
+}
+
 label {
-    margin-top: 6px;
     font-size: 14px;
     font-weight: 700;
+}
+
+#user, #newplay {
+    border: 1px solid lightgrey;
+    width: 100%;
+    height: 36px;
+    margin-top: 6px;
 }
 
 #user:focus, #newplay:focus {
@@ -81,16 +91,15 @@ label {
     border: 1px solid grey;
 }
 
-#user, #newplay {
-    border: 1px solid lightgrey;
-    margin-top: 6px;
-    margin-bottom: 0;
-    width: 100%;
-    height: 36px;
+input {
+    margin-bottom: 16px;
+}
+
+input.btn {
+    margin-top: 10px;
 }
 
 button, .btn {
-    margin-top: 24px;
     color: white;
     background-color: #15883e;
     width: 100%;

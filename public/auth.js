@@ -35,8 +35,8 @@ let access_token
     };
 
     var params = getHashParams();
-    var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
-    //var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
+    //var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
+    var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
 
     access_token = params.access_token,
         state = params.state,
@@ -69,7 +69,6 @@ let access_token
         document.querySelector("#login-button").addEventListener('click', function () {
 
             var client_id = 'f4d501136b224ab4b3827b1e63e3e047'; // Your client id
-
 
             var state = generateRandomString(16);
 
