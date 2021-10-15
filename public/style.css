@@ -5,6 +5,10 @@ html {
     font-weight:400;
 }
 
+h2 {
+    font-size: 18px;
+}
+
 body {
     margin: 0;
 }
