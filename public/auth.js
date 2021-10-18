@@ -73,7 +73,7 @@ let access_token
             var state = generateRandomString(16);
 
             localStorage.setItem(stateKey, state);
-            var scope = 'playlist-read-private playlist-read-collaborative playlist-read-public playlist-modify-public playlist-modify-private ';
+            var scope = 'playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private';
 
             var url = 'https://accounts.spotify.com/authorize';
             url += '?response_type=token';
