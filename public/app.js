@@ -95,8 +95,11 @@ async function playlistFetch(listname, offset) {
 //function to combine all playlists
 async function combinePlaylist() {
 
-    //call the playlist fetch function for each input playlist
+    //show generating overlay
+    $("#generating").css("display", "flex")
+    $("#generating-text").css("display", "flex")
 
+    //call the playlist fetch function for each input playlist
     //make nested array of tracklists for all playlists
     const combinedPlaylists = []
     for (x in selectedPlaylists) {
@@ -148,6 +151,7 @@ async function combinePlaylist() {
 
 //function to create a new playlist with spotify API
 async function createPlaylist(user, tracks) {
+
     const newplay = document.querySelector("#newplay").value
     const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
         method: 'POST',
