@@ -149,6 +149,5 @@ button:hover, .btn:hover {
 #generating-text {
     color: white;
     font-size: 30px;
-    letter-spacing: -1.5px;
     display: none;
 }
