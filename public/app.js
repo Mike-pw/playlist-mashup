@@ -3,7 +3,7 @@ const selectedPlaylists = []
 
 //function to get playlist from spotify API
 async function getPlaylists(user) {
-    const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
+    const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists?limit=50`, {
         method: 'GET',
         headers: {
             "Authorization": "Bearer " + access_token
