@@ -168,7 +168,7 @@ async function createPlaylist(user, tracks) {
     playlistURL = data.external_urls.spotify
     playlistID = data.id
     playlistURL = data.external_urls.spotify
-    window.location = playlistURL
+
 
     //make multiple requests if more than 100 songs to be added
     //addToPlaylist(playlistID, tracks.slice(0, 100))
@@ -180,6 +180,9 @@ async function createPlaylist(user, tracks) {
         i++
     }
     await addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length))
+    $("#generating").css("display", "none")
+    $("#generating-text").css("display", "none")
+    window.location = playlistURL
 }
 
 //function to add new songs to the new playlist with spotify API
