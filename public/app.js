@@ -152,7 +152,10 @@ async function combinePlaylist() {
 //function to create a new playlist with spotify API
 async function createPlaylist(user, tracks) {
 
-    const newplay = document.querySelector("#newplay").value
+    let newplay = document.querySelector("#newplay").value
+    if (newplay == "") {
+        newplay = "Playlist Mashup"
+    }
     const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
         method: 'POST',
         headers: {
@@ -168,7 +171,6 @@ async function createPlaylist(user, tracks) {
     playlistURL = data.external_urls.spotify
     playlistID = data.id
     playlistURL = data.external_urls.spotify
-
 
     //make multiple requests if more than 100 songs to be added
     //addToPlaylist(playlistID, tracks.slice(0, 100))
