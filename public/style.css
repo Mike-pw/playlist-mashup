@@ -57,7 +57,7 @@ li {
 }
 
 li::marker {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 ol {
@@ -124,7 +124,7 @@ button:hover, .btn:hover {
 
     h1 {
      font-size: 22px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -1px;
 }
 
