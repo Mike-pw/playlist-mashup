@@ -15,7 +15,7 @@
             "purpose": "any maskable"
         },
         {
-            "src": "/maskable-512x512.png",
+            "src": "/maskable.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
