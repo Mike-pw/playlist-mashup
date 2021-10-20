@@ -1,7 +1,7 @@
 {
     "name": "Playlist Mashup",
     "short_name": "PM",
-    "start_url": "https://playlistmashup.com",
+    "start_url": "https://www.playlistmashup.com/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -17,5 +17,5 @@
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone",
-    "prefer_related_applications": "false"
+    "prefer_related_applications": false
 }

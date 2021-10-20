@@ -42,25 +42,28 @@ let access_token
         state = params.state,
         storedState = localStorage.getItem(stateKey);
 
+    async function request() {
+        const response = await fetch("https://api.spotify.com/v1/me", {
+            method: 'GET',
+            headers: {
+                "Authorization": "Bearer " + access_token
+            }
+        })
+        const data = await response.json()
+        user = data.display_name
+        document.getElementById("user").value = user;
+        document.querySelector("#login").style.display = "none"
+        document.querySelector("#loggedin").style.display = "block"
+        displayPlaylists()
+    }
+
     if (access_token && (state == null || state !== storedState)) {
         alert('Authentication error, please retry');
         window.location = redirect_uri
     } else {
         localStorage.removeItem(stateKey);
         if (access_token) {
-            $.ajax({
-                url: 'https://api.spotify.com/v1/me',
-                headers: {
-                    'Authorization': 'Bearer ' + access_token
-                },
-                success: function (response) {
-                    user = response.display_name
-                    document.getElementById("user").value = user;
-                    document.querySelector("#login").style.display = "none"
-                    document.querySelector("#loggedin").style.display = "block"
-                    displayPlaylists()
-                }
-            });
+            request()
         } else {
             document.querySelector("#loggedin").style.display = "none"
             document.querySelector("#login").style.display = "block"
