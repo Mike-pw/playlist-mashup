@@ -96,8 +96,8 @@ async function playlistFetch(listname, offset) {
 async function combinePlaylist() {
 
     //show generating overlay
-    $("#generating").css("display", "flex")
-    $("#generating-text").css("display", "flex")
+    document.querySelector("#generating").style.display = "flex"
+    document.querySelector("#generating-text").style.display = "flex"
 
     //call the playlist fetch function for each input playlist
     //make nested array of tracklists for all playlists
@@ -180,8 +180,8 @@ async function createPlaylist(user, tracks) {
         i++
     }
     await addToPlaylist(playlistID, tracks.slice(i * 100, tracks.length))
-    $("#generating").css("display", "none")
-    $("#generating-text").css("display", "none")
+    document.querySelector("#generating").style.display = "none"
+    document.querySelector("#generating-text").style.display = "none"
     window.location = playlistURL
 }
 

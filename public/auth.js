@@ -35,8 +35,8 @@ let access_token
     };
 
     var params = getHashParams();
-    var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
-    //var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
+    //var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
+    var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
 
     access_token = params.access_token,
         state = params.state,
@@ -56,14 +56,14 @@ let access_token
                 success: function (response) {
                     user = response.display_name
                     document.getElementById("user").value = user;
-                    $('#login').hide();
-                    $('#loggedin').show();
+                    document.querySelector("#login").style.display = "none"
+                    document.querySelector("#loggedin").style.display = "block"
                     displayPlaylists()
                 }
             });
         } else {
-            $('#loggedin').hide();
-            $('#login').show();
+            document.querySelector("#loggedin").style.display = "none"
+            document.querySelector("#login").style.display = "block"
         }
 
         document.querySelector("#login-button").addEventListener('click', function () {
@@ -83,7 +83,7 @@ let access_token
             url += '&state=' + encodeURIComponent(state);
 
             window.location = url;
-            $('#login').hide();
+            document.querySelector("#login").style.display = "none"
         }, false);
 
     }
