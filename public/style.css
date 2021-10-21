@@ -25,7 +25,8 @@ h1 {
 
 #logo {
     display: block;
-    margin: 90px auto 54px auto;
+    margin-top: 90px;
+    margin-bottom: 54px;
 }
 
 h2 {
