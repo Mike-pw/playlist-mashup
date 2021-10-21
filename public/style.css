@@ -24,6 +24,7 @@ h1 {
 }
 
 #logo {
+    display: block;
     margin: 90px auto 54px auto;
 }
 

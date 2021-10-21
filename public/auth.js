@@ -35,8 +35,8 @@ let access_token
     };
 
     var params = getHashParams();
-    var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
-    //var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
+    //var redirect_uri = 'https://playlistmashup.com/'; //PRODUCTION
+    var redirect_uri = 'http://localhost:8888/'; //DEVELOPMENT
 
     access_token = params.access_token,
         state = params.state,
@@ -52,7 +52,7 @@ let access_token
         const data = await response.json()
         user = data.display_name
         document.getElementById("user").value = user;
-        document.querySelector("#landing").style.display = "none"
+        document.querySelector("#login").style.display = "none"
         document.querySelector("#loggedin").style.display = "block"
         displayPlaylists()
     }
@@ -66,7 +66,11 @@ let access_token
             request()
         } else {
             document.querySelector("#loggedin").style.display = "none"
-            document.querySelector("#landing").style.display = "block"
+            document.querySelector("#login").style.display = "flex"
+            document.querySelector("#login").style.maxHeight = "640px"
+            document.querySelector("#login").style.width = "100%"
+            document.querySelector("#login").style.justifyContent = "center"
+            document.querySelector("#login").style.flexWrap = "wrap"
         }
 
         document.querySelector("#login-button").addEventListener('click', function () {
@@ -86,7 +90,7 @@ let access_token
             url += '&state=' + encodeURIComponent(state);
 
             window.location = url;
-            document.querySelector("#landing").style.display = "none"
+            document.querySelector("#login").style.display = "none"
         }, false);
 
     }
