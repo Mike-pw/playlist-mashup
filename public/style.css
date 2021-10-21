@@ -25,8 +25,7 @@ h1 {
 
 #logo {
     display: block;
-    margin-top: 90px;
-    margin-bottom: 54px;
+    margin-top: 90px 84px 54px 84px;
 }
 
 h2 {
@@ -38,9 +37,6 @@ h2 {
 #login {
     max-height: 640px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 p {
