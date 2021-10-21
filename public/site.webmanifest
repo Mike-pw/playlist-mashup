@@ -1,7 +1,7 @@
 {
     "name": "Playlist Mashup",
     "short_name": "Playlist Mashup",
-    "start_url": "https://www.playlistmashup.com/?utm_source=App",
+    "start_url": "https://www.playlistmashup.com/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
