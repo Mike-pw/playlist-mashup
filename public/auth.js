@@ -66,7 +66,7 @@ let access_token
             request()
         } else {
             document.querySelector("#loggedin").style.display = "none"
-            document.querySelector("#login").style.display = "block"
+            document.querySelector("#login").style.display = "flex"
         }
 
         document.querySelector("#login-button").addEventListener('click', function () {
