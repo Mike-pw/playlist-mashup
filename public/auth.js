@@ -52,7 +52,7 @@ let access_token
         const data = await response.json()
         user = data.display_name
         document.getElementById("user").value = user;
-        document.querySelector("#login").style.display = "none"
+        document.querySelector("#landing").style.display = "none"
         document.querySelector("#loggedin").style.display = "block"
         displayPlaylists()
     }
@@ -66,7 +66,7 @@ let access_token
             request()
         } else {
             document.querySelector("#loggedin").style.display = "none"
-            document.querySelector("#login").style.display = "flex"
+            document.querySelector("#landing").style.display = "block"
         }
 
         document.querySelector("#login-button").addEventListener('click', function () {
@@ -86,7 +86,7 @@ let access_token
             url += '&state=' + encodeURIComponent(state);
 
             window.location = url;
-            document.querySelector("#login").style.display = "none"
+            document.querySelector("#landing").style.display = "none"
         }, false);
 
     }
