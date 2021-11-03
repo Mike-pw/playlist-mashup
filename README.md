@@ -1,5 +1,4 @@
-# playlist-mashup
-Web-App to combine Spotify playlists
+# Web-App to combine Spotify playlists
 
 Web app that combines Spotify playlists from multiple users, creating a new playlist with equal parts from each input playlist.
 
